@@ -87,7 +87,7 @@ type PeriodicMute struct {
 }
 
 func (m *AlertMute) TableName() string {
-	return "alert_mute"
+	return TablePrefix + "alert_mute"
 }
 
 func AlertMuteGetById(ctx *ctx.Context, id int64) (*AlertMute, error) {

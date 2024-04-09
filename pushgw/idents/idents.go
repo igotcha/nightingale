@@ -114,7 +114,8 @@ func (s *Set) UpdateTargets(lst []string, now int64) error {
 		return nil
 	}
 
-	ret := s.ctx.DB.Table("target").Where("ident in ?", lst).Update("update_at", now)
+	targetTable := (&models.Target{}).TableName()
+	ret := s.ctx.DB.Table(targetTable).Where("ident in ?", lst).Update("update_at", now)
 	if ret.Error != nil {
 		return ret.Error
 	}
@@ -125,14 +126,14 @@ func (s *Set) UpdateTargets(lst []string, now int64) error {
 
 	// there are some idents not found in db, so insert them
 	var exists []string
-	err = s.ctx.DB.Table("target").Where("ident in ?", lst).Pluck("ident", &exists).Error
+	err = s.ctx.DB.Table(targetTable).Where("ident in ?", lst).Pluck("ident", &exists).Error
 	if err != nil {
 		return err
 	}
 
 	news := slice.SubString(lst, exists)
 	for i := 0; i < len(news); i++ {
-		err = s.ctx.DB.Exec("INSERT INTO target(ident, update_at) VALUES(?, ?)", news[i], now).Error
+		err = s.ctx.DB.Exec(fmt.Sprintf("INSERT INTO `%s` (ident, update_at) VALUES(?, ?)", targetTable), news[i], now).Error
 		if err != nil {
 			logger.Error("failed to insert target:", news[i], "error:", err)
 		}

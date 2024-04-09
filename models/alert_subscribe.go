@@ -53,7 +53,7 @@ type AlertSubscribe struct {
 }
 
 func (s *AlertSubscribe) TableName() string {
-	return "alert_subscribe"
+	return TablePrefix + "alert_subscribe"
 }
 
 func AlertSubscribeGets(ctx *ctx.Context, groupId int64) (lst []AlertSubscribe, err error) {

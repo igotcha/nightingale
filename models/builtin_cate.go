@@ -11,7 +11,7 @@ type BuiltinCate struct {
 }
 
 func (b *BuiltinCate) TableName() string {
-	return "builtin_cate"
+	return TablePrefix + "builtin_cate"
 }
 
 // 创建 builtin_cate

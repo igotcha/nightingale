@@ -38,7 +38,7 @@ type Target struct {
 }
 
 func (t *Target) TableName() string {
-	return "target"
+	return TablePrefix + "target"
 }
 
 func (t *Target) FillGroup(ctx *ctx.Context, cache map[int64]*BusiGroup) error {

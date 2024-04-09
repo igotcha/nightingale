@@ -72,7 +72,7 @@ type TLS struct {
 }
 
 func (ds *Datasource) TableName() string {
-	return "datasource"
+	return TablePrefix + "datasource"
 }
 
 func (ds *Datasource) Verify() error {

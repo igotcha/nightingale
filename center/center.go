@@ -3,6 +3,7 @@ package center
 import (
 	"context"
 	"fmt"
+	imodels "github.com/flashcatcloud/ibex/src/models"
 
 	"github.com/ccfos/nightingale/v6/alert"
 	"github.com/ccfos/nightingale/v6/alert/astats"
@@ -54,6 +55,10 @@ func Initialize(configDir string, cryptoKey string) (func(), error) {
 	i18nx.Init(configDir)
 	cstats.Init()
 	flashduty.Init(config.Center.FlashDuty)
+
+	// add TablePrefix to models
+	models.TablePrefix = config.DB.TablePrefix
+	imodels.TablePrefix = config.DB.TablePrefix
 
 	db, err := storage.New(config.DB)
 	if err != nil {

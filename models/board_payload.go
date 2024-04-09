@@ -12,7 +12,7 @@ type BoardPayload struct {
 }
 
 func (p *BoardPayload) TableName() string {
-	return "board_payload"
+	return TablePrefix + "board_payload"
 }
 
 func (p *BoardPayload) Update(ctx *ctx.Context, selectField interface{}, selectFields ...interface{}) error {

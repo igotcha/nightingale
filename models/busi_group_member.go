@@ -9,7 +9,7 @@ type BusiGroupMember struct {
 }
 
 func (BusiGroupMember) TableName() string {
-	return "busi_group_member"
+	return TablePrefix + "busi_group_member"
 }
 
 func BusiGroupIds(ctx *ctx.Context, userGroupIds []int64, permFlag ...string) ([]int64, error) {

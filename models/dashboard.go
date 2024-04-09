@@ -24,7 +24,7 @@ type Dashboard struct {
 }
 
 func (d *Dashboard) TableName() string {
-	return "dashboard"
+	return TablePrefix + "dashboard"
 }
 
 func (d *Dashboard) Verify() error {

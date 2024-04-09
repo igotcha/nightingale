@@ -1,6 +1,7 @@
 package migrate
 
 import (
+	"github.com/ccfos/nightingale/v6/models"
 	"github.com/toolkits/pkg/logger"
 	"gorm.io/gorm"
 )
@@ -19,12 +20,13 @@ type EsIndexPattern struct {
 }
 
 func MigrateEsIndexPatternTable(db *gorm.DB) error {
+	tableName := (&models.EsIndexPattern{}).TableName()
 	db = db.Set("gorm:table_options", "CHARSET=utf8mb4")
-	if db.Migrator().HasTable("es_index_pattern") {
+	if db.Migrator().HasTable(tableName) {
 		return nil
 	}
 
-	err := db.Table("es_index_pattern").AutoMigrate(&EsIndexPattern{})
+	err := db.Table(tableName).AutoMigrate(&EsIndexPattern{})
 	if err != nil {
 		logger.Errorf("failed to migrate es index pattern table: %v", err)
 		return err

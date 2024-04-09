@@ -68,7 +68,7 @@ type AlertCurEvent struct {
 }
 
 func (e *AlertCurEvent) TableName() string {
-	return "alert_cur_event"
+	return TablePrefix + "alert_cur_event"
 }
 
 func (e *AlertCurEvent) Add(ctx *ctx.Context) error {

@@ -12,7 +12,7 @@ type Role struct {
 }
 
 func (Role) TableName() string {
-	return "role"
+	return TablePrefix + "role"
 }
 
 func RoleGets(ctx *ctx.Context, where string, args ...interface{}) ([]Role, error) {

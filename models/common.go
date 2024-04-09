@@ -12,6 +12,8 @@ const AdminRole = "Admin"
 // if rule's cluster field contains `ClusterAll`, means it take effect in all clusters
 const DatasourceIdAll = 0
 
+var TablePrefix string
+
 func DB(ctx *ctx.Context) *gorm.DB {
 	return ctx.DB
 }

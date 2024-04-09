@@ -25,7 +25,7 @@ type TaskRecord struct {
 }
 
 func (r *TaskRecord) TableName() string {
-	return "task_record"
+	return TablePrefix + "task_record"
 }
 
 // create task

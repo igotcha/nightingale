@@ -12,7 +12,7 @@ type ChartShare struct {
 }
 
 func (cs *ChartShare) TableName() string {
-	return "chart_share"
+	return TablePrefix + "chart_share"
 }
 
 func (cs *ChartShare) Add(ctx *ctx.Context) error {

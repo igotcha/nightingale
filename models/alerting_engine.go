@@ -17,7 +17,7 @@ type AlertingEngines struct {
 }
 
 func (e *AlertingEngines) TableName() string {
-	return "alerting_engines"
+	return TablePrefix + "alerting_engines"
 }
 
 // UpdateCluster 页面上用户会给各个n9e-server分配要关联的目标集群是什么

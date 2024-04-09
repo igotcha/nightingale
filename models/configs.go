@@ -31,7 +31,7 @@ type Configs struct { //ckey+external
 }
 
 func (Configs) TableName() string {
-	return "configs"
+	return TablePrefix + "configs"
 }
 
 var (

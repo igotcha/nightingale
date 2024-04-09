@@ -23,7 +23,7 @@ type AlertAggrView struct {
 }
 
 func (v *AlertAggrView) TableName() string {
-	return "alert_aggr_view"
+	return TablePrefix + "alert_aggr_view"
 }
 
 func (v *AlertAggrView) Verify() error {

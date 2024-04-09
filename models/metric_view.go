@@ -21,7 +21,7 @@ type MetricView struct {
 }
 
 func (v *MetricView) TableName() string {
-	return "metric_view"
+	return TablePrefix + "metric_view"
 }
 
 func (v *MetricView) Verify() error {

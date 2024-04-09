@@ -36,7 +36,7 @@ type UserGroupWithPermFlag struct {
 }
 
 func (bg *BusiGroup) TableName() string {
-	return "busi_group"
+	return TablePrefix + "busi_group"
 }
 
 func (bg *BusiGroup) FillUserGroups(ctx *ctx.Context) error {

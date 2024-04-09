@@ -34,7 +34,7 @@ type TaskTpl struct {
 }
 
 func (t *TaskTpl) TableName() string {
-	return "task_tpl"
+	return TablePrefix + "task_tpl"
 }
 
 func TaskTplTotal(ctx *ctx.Context, bgids []int64, query string) (int64, error) {
@@ -212,7 +212,7 @@ func (t *TaskTpl) Save(ctx *ctx.Context, hosts []string) error {
 				continue
 			}
 
-			err := tx.Table("task_tpl_host").Create(map[string]interface{}{
+			err := tx.Table(TablePrefix + "task_tpl_host").Create(map[string]interface{}{
 				"id":   t.Id,
 				"host": host,
 			}).Error
@@ -228,7 +228,7 @@ func (t *TaskTpl) Save(ctx *ctx.Context, hosts []string) error {
 
 func (t *TaskTpl) Hosts(ctx *ctx.Context) ([]string, error) {
 	var arr []string
-	err := DB(ctx).Table("task_tpl_host").Where("id=?", t.Id).Order("ii").Pluck("host", &arr).Error
+	err := DB(ctx).Table(TablePrefix+"task_tpl_host").Where("id=?", t.Id).Order("ii").Pluck("host", &arr).Error
 	return arr, err
 }
 
@@ -265,7 +265,7 @@ func (t *TaskTpl) Update(ctx *ctx.Context, hosts []string) error {
 			return err
 		}
 
-		if err = tx.Exec("DELETE FROM task_tpl_host WHERE id = ?", t.Id).Error; err != nil {
+		if err = tx.Exec(fmt.Sprintf("DELETE FROM %stask_tpl_host WHERE id = ?", TablePrefix), t.Id).Error; err != nil {
 			return err
 		}
 
@@ -275,7 +275,7 @@ func (t *TaskTpl) Update(ctx *ctx.Context, hosts []string) error {
 				continue
 			}
 
-			err := tx.Table("task_tpl_host").Create(map[string]interface{}{
+			err := tx.Table(TablePrefix + "task_tpl_host").Create(map[string]interface{}{
 				"id":   t.Id,
 				"host": host,
 			}).Error
@@ -291,7 +291,7 @@ func (t *TaskTpl) Update(ctx *ctx.Context, hosts []string) error {
 
 func (t *TaskTpl) Del(ctx *ctx.Context) error {
 	return DB(ctx).Transaction(func(tx *gorm.DB) error {
-		if err := tx.Exec("DELETE FROM task_tpl_host WHERE id=?", t.Id).Error; err != nil {
+		if err := tx.Exec(fmt.Sprintf("DELETE FROM %stask_tpl_host WHERE id=?", TablePrefix), t.Id).Error; err != nil {
 			return err
 		}
 

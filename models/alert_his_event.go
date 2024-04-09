@@ -56,7 +56,7 @@ type AlertHisEvent struct {
 }
 
 func (e *AlertHisEvent) TableName() string {
-	return "alert_his_event"
+	return TablePrefix + "alert_his_event"
 }
 
 func (e *AlertHisEvent) Add(ctx *ctx.Context) error {

@@ -23,7 +23,7 @@ type EsIndexPattern struct {
 }
 
 func (t *EsIndexPattern) TableName() string {
-	return "es_index_pattern"
+	return TablePrefix + "es_index_pattern"
 }
 
 func (r *EsIndexPattern) Add(ctx *ctx.Context) error {

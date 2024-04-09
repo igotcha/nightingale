@@ -29,7 +29,7 @@ type NotifyTpl struct {
 }
 
 func (n *NotifyTpl) TableName() string {
-	return "notify_tpl"
+	return TablePrefix + "notify_tpl"
 }
 
 func (n *NotifyTpl) Create(c *ctx.Context) error {

@@ -37,7 +37,7 @@ type Board struct {
 }
 
 func (b *Board) TableName() string {
-	return "board"
+	return TablePrefix + "board"
 }
 
 func (b *Board) Verify() error {

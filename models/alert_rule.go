@@ -208,7 +208,7 @@ func Str2Int(arr []string) []int64 {
 }
 
 func (ar *AlertRule) TableName() string {
-	return "alert_rule"
+	return TablePrefix + "alert_rule"
 }
 
 func (ar *AlertRule) Verify() error {

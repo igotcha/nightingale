@@ -10,7 +10,7 @@ type Chart struct {
 }
 
 func (c *Chart) TableName() string {
-	return "chart"
+	return TablePrefix + "chart"
 }
 
 func ChartsOf(ctx *ctx.Context, chartGroupId int64) ([]Chart, error) {

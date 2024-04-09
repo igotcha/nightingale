@@ -14,7 +14,7 @@ type SsoConfig struct {
 }
 
 func (b *SsoConfig) TableName() string {
-	return "sso_config"
+	return TablePrefix + "sso_config"
 }
 
 // get all sso_config

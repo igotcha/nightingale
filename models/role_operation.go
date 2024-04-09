@@ -11,7 +11,7 @@ type RoleOperation struct {
 }
 
 func (RoleOperation) TableName() string {
-	return "role_operation"
+	return TablePrefix + "role_operation"
 }
 
 func RoleHasOperation(ctx *ctx.Context, roles []string, operation string) (bool, error) {

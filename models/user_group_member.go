@@ -11,7 +11,7 @@ type UserGroupMember struct {
 }
 
 func (UserGroupMember) TableName() string {
-	return "user_group_member"
+	return TablePrefix + "user_group_member"
 }
 
 func MyGroupIds(ctx *ctx.Context, userId int64) ([]int64, error) {

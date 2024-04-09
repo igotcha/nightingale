@@ -2,6 +2,8 @@ module github.com/ccfos/nightingale/v6
 
 go 1.18
 
+replace github.com/flashcatcloud/ibex v1.3.2 => ./ibex
+
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/coreos/go-oidc v2.2.1+incompatible

@@ -23,7 +23,7 @@ type UserGroup struct {
 }
 
 func (ug *UserGroup) TableName() string {
-	return "user_group"
+	return TablePrefix + "user_group"
 }
 
 func (ug *UserGroup) Verify() error {

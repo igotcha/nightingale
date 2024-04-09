@@ -15,7 +15,7 @@ type ChartGroup struct {
 }
 
 func (cg *ChartGroup) TableName() string {
-	return "chart_group"
+	return TablePrefix + "chart_group"
 }
 
 func (cg *ChartGroup) Verify() error {

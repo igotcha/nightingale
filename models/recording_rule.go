@@ -51,7 +51,7 @@ type Query struct {
 }
 
 func (re *RecordingRule) TableName() string {
-	return "recording_rule"
+	return TablePrefix + "recording_rule"
 }
 
 func (re *RecordingRule) FE2DB() {

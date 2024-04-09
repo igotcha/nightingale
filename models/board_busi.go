@@ -11,7 +11,7 @@ type BoardBusigroup struct {
 }
 
 func (BoardBusigroup) TableName() string {
-	return "board_busigroup"
+	return TablePrefix + "board_busigroup"
 }
 
 func BoardBusigroupAdd(tx *gorm.DB, boardId int64, busiGroupIds []int64) error {
